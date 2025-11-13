@@ -1,0 +1,23 @@
+# Example configuration for the Mycelia AI platform
+
+app:
+  name: mycelia-ai
+  environment: development
+
+services:
+  ingestion:
+    enabled: true
+    refresh_interval: "15m"
+    sources:
+      - type: api
+        name: sample-dataset
+        endpoint: https://example.com/api
+  knowledge_graph:
+    storage: postgres
+    connection_uri: postgresql://user:password@localhost:5432/mycelia
+
+observability:
+  logging_level: INFO
+  metrics:
+    enabled: true
+    exporter: prometheus
